@@ -105,7 +105,6 @@ version = "0.1.0"
 dependencies = [
  "float_extras 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "hex-literal 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "libc 0.2.58 (registry+https://github.com/rust-lang/crates.io-index)",
  "rayon 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "sha-1 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
