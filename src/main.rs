@@ -14,18 +14,23 @@ const SALT2: [u8; 8] = hex!("0000000000000000");
 const HASH: [u8; 20] = hex!("0000000000000000000000000000000000000000");
 
 fn main() {
+    let sha1template = {
+        let mut hasher = Sha1::new();
+        hasher.input(SALT1);
+        hasher.input(SALT2);
+        hasher
+    };
+
     let result = (0u32..=0xFF)
         .into_par_iter()
         .filter_map(|n| {
             let pos: u32 = n << 24;
-            println!("Checking block {}/256 (seeds {:X}-{:X})", n + 1, pos, (pos + 0xFF_FFFF));
-
-            let sha1template = {
-                let mut hasher = Sha1::new();
-                hasher.input(SALT1);
-                hasher.input(SALT2);
-                hasher
-            };
+            println!(
+                "Checking block {}/256 (seeds {:X}-{:X})",
+                n + 1,
+                pos,
+                (pos + 0xFF_FFFF)
+            );
 
             let mut buf = [0u16; 12];
             let mut rand = DRand48 { x: 0 };
